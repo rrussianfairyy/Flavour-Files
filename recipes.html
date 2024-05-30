@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavour Files - Recipes</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+
+        }
+        header {
+            background-color:   #ff670f;
+            color: #fff;
+            text-align: left;
+            padding: 5px 20px;
+            position: relative;
+            height: 100px;
+
+        }
+        header h1 {
+            font-size: 22px;
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 20px 0;
+            text-align: left;
+            
+        }
+        header p {
+            font-size: 12px;
+            margin-top: -10px;
+            text-align: left;
+        }
+        .hamburger {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background-color: #000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #333;
+        }
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+        .dropdown-menu a:hover {
+            background-color: #333;
+        }
+        .container {
+            flex: 1;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .section {
+            margin-bottom: 30px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        .section h2 {
+            font-size: 60px;
+            color:#d45a13;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .section p {
+            text-align: center;
+            
+        }
+        .recipes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .recipe-card {
+            background: #fdfdfd;
+            border-radius: 0px;
+            box-shadow: 0 2px 5px #d45a13;
+            overflow: hidden;
+            width: calc(33.333% - 20px);
+            box-sizing: border-box;
+            transition: transform 0.3s;
+            margin-bottom: 30px;
+        }
+        .recipe-card:hover {
+            transform: scale(1.05);
+        }
+        .recipe-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .recipe-card h3 {
+            font-size: 24px;
+            margin: 16px;
+            color:#d45a13;
+        }
+        .recipe-card p {
+            font-size: 16px;
+            margin: 0 16px 16px;
+            color: #d45a13;
+            text-align: left;
+        }
+        .recipe-card a {
+            text-decoration: none;
+            color:  #d45a13;
+        }
+        #generateButton {
+            padding: 20px 40px;
+            font-size: 20px;
+            display: block;
+            margin: 0 auto;
+            color: #d45a13;
+        }
+        footer {
+            background-color: #ff670f;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.587); 
+            z-index: 9999;
+            display: none;
+            
+        }
+        #generatingMessage {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #fff;
+            z-index: 10000; 
+            display: none; 
+            text-align: center;
+            opacity: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FLAVOUR FILES</h1>
+        <p></p>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu">
+            <a href="index.html">Home</a>
+            <a href="recipes.html">Recipes</a>
+            <a href="user-photos.html">User Photos</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </header>
+    <section id="recipes" class="section">
+        <h2>POPULAR RECIPES</h2>
+        <br><br><br>
+        <div class="recipes">
+            <div class="recipe-card">
+                <a href="https://www.loveandlemons.com/matcha-latte/" target="_blank">
+                    <img src="https://primulaproducts.com/cdn/shop/articles/jackieo_Youve_been_drinking_matcha_green_tea_latte_for_a_few_w_f5899c8d-f20b-4331-b1a8-d1eb1736d367_1456x.png?v=1687789713" alt="Recipe 1">
+                    <h3>Matcha Latte Recipe</h3>
+                    <p>Indulge in a fluffy matcha latte in these 4 steps.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://vikalinka.com/meat-dumplings-pelmeni/" target="_blank">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/21/a1/05/8c/great-taste-to-go.jpg?w=600&h=400&s=1" alt="Recipe 2">
+                    <h3>Traditional Pelmeni Recipe</h3>
+                    <p>Juicy Eastern European dumplings that will leave you restless for more.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.justonecookbook.com/homemade-chashu-miso-ramen/" target="_blank">
+                    <img src="https://www.halfbakedharvest.com/wp-content/uploads/2020/02/30-Minute-Creamy-Sesame-Miso-Ramen-with-Crispy-Mushrooms-1.jpg" alt="Recipe 3">
+                    <h3>Miso Ramen Recipe</h3>
+                    <p>The go-to recipe to enjoy on a cold winter afternoon.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.cooking-therapy.com/matcha-white-chocolate-chip-cookies/" target="_blank">
+                    <img src="https://teakandthyme.com/wp-content/uploads/2023/09/matcha-white-chocolate-cookies-DSC_5105-1x1-1200.jpg" alt="Recipe 3">
+                    <h3>Matcha Cookie Recipe</h3>
+                    <p>Delicious Matcha Cookies to make with love!</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.ambitiouskitchen.com/best-cinnamon-rolls/" target="_blank">
+                    <img src="https://www.bakerella.com/site/wp-content/uploads/2015/01/cinnamonrolls-735x551.jpg" alt="Recipe 3">
+                    <h3>Cinnamon Roll Recipe</h3>
+                    <p>Fluffiest cinnamon rolls you'll ever eat.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://simply-delicious-food.com/easy-focaccia-bread/" target="_blank">
+                    <img src="https://www.justalittlebitofbacon.com/wp-content/uploads/2017/08/garlic-thyme-no-knead-focaccia-1.jpg" alt="Recipe 3">
+                    <h3>Easy Tasty Focaccia Bread</h3>
+                    <p>Add some thyme for extra flavour!</p>
+                </a>
+            </div>
+            <br>
+            <button id="generateButton" onclick="generateRandomRecipe()">-Click for a mystery recipe!-</button>
+        </div>
+        <br>
+        <br>
+        <hr>
+        <br>
+    </section>
+    
+    <section id="recipes" class="section">
+        <h2>VEGETERIAN RECIPES</h2>
+        <br><br><br>
+        <div class="recipes">
+
+            <div class="recipe-card">
+                <a href="https://www.recipetineats.com/pesto-pasta-salad/" target="_blank">
+                    <img src="https://www.recipetineats.com/wp-content/uploads/2023/03/Pesto-pasta-salad_7.jpg" alt="Recipe 1">
+                    <h3>Pesto pasta salad recipe</h3>
+                    <p>A vegeterian gem youll love if your looking to get healthy and green.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://dish.co.nz/recipes/roasted-pumpkin-and-lentil-salad-with-feta-and-yoghurt-dressing/" target="_blank">
+                    <img src="https://dish.co.nz/assets/Uploads/pumpkin-v2__FillWzg1MCwxMTc0XQ.jpg" alt="New Recipe 1">
+                    <h3>Roasted Pumpking & Lentil salad with feta & yoghurt dressing recipe</h3>
+                    <p>Sweet and earthy pumpkin pairs beautifully with the garlicky feta dressing and the crunchy toppings.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.tamingtwins.com/courgette-fritters-recipe/" target="_blank">
+                    <img src="https://www.tamingtwins.com/wp-content/uploads/2023/06/image-35.jpeg" alt="New Recipe 2">
+                    <h3>Easy courgette fritters with feta cheese recipe</h3>
+                    <p>These Courgette Fritters are cheesy, herby and totally delicious.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.loveandlemons.com/vegetarian-lasagna/" target="_blank">
+                    <img src="https://cdn.loveandlemons.com/wp-content/uploads/2023/12/vegetarian-lasagna-recipe.jpg" alt="Recipe 1">
+                    <h3>Vegetarian lasagna recipe</h3>
+                    <p>The best vegeterian lasagna to try this year! everyones new favourite.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.wellplated.com/tofu-tacos/" target="_blank">
+                    <img src="https://www.wellplated.com/wp-content/uploads/2019/01/Baked-Tofu-Tacos.jpg" alt="Recipe 1">
+                    <h3>Tofu Tacos recipe</h3>
+                    <p>You wont even tell its tofu. Try out these plant based tacos now!</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.bbcgoodfood.com/recipes/vegetarian-ramen" target="_blank">
+                    <img src="https://images.immediate.co.uk/production/volatile/sites/30/2022/07/Vegetarian-ramen-0c0831e.jpg?quality=90&webp=true&resize=440,400" alt="Recipe 1">
+                    <h3>Vegeterian Ramen recipe</h3>
+                    <p>Rustle up this warming veggie ramen in just 15 minutes.</p>
+                </a>
+            </div>
+          
+        </div>
+        <br>
+        <br>
+        <hr>
+        <br>
+    </section>    
+    <br>
+    <section id="recipes" class="section">
+        <h2>VEGAN RECIPES</h2>
+        <br><br><br>
+        <div class="recipes">
+
+            <div class="recipe-card">
+                <a href="https://www.bbcgoodfood.com/recipes/satay-sweet-potato-curry" target="_blank">
+                    <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/satay-sweet-potato-curry-17cc62d.jpg?quality=90&webp=true&resize=440,400" alt="Recipe 1">
+                    <h3>Sweet potato & peanut curry recipe</h3>
+                    <p>Cook this tasty, budget-friendly vegan curry for an easy family dinner.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.noracooks.com/vegan-carrot-cake/" target="_blank">
+                    <img src="https://www.noracooks.com/wp-content/uploads/2022/02/vegan-carrot-cake-4.jpg" alt="New Recipe 1">
+                    <h3>1 bowl vegan carrot cake recipe</h3>
+                    <p>he best Vegan Carrot Cake! Perfectly spiced, incredibly moist, topped with creamy vegan cream cheese frosting and simple to make in just 1 bowl!</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.noracooks.com/oat-flour-pancakes/" target="_blank">
+                    <img src="https://www.noracooks.com/wp-content/uploads/2024/05/oat-flour-pancakes-4-1-1200x1800.jpg" alt="New Recipe 2">
+                    <h3>Oat flour pancakes recipe</h3>
+                    <p>These Oat Flour Pancakes are easy to make with only 7 ingredients! </p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.loveandlemons.com/pasta-pomodoro/" target="_blank">
+                    <img src="https://cdn.loveandlemons.com/wp-content/uploads/2019/04/pasta-pomodoro-1.jpg" alt="Recipe 1">
+                    <h3>Creamy pasta pomodoro recipe</h3>
+                    <p>This healthy & hearty pasta pomodoro will become your go-to weeknight dinner! The creamy sauce is bursting with tangy tomato flavor.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.loveandlemons.com/vegan-pizza/" target="_blank">
+                    <img src="https://cdn.loveandlemons.com/wp-content/uploads/2018/09/vegan-pizza.jpg" alt="Recipe 1">
+                    <h3>Best vegan pizza recipe</h3>
+                    <p>Even meat eaters will love this vegan pizza recipe! With creamy cashew sauce, summer veggies & sun-dried tomatoes, it's flavorful and fun to eat.</p>
+                </a>
+            </div>
+            <div class="recipe-card">
+                <a href="https://www.loveandlemons.com/vegan-peanut-butter-cookies/" target="_blank">
+                    <img src="https://cdn.loveandlemons.com/wp-content/uploads/2019/10/peanut-butter-cookies.jpg" alt="Recipe 1">
+                    <h3>Vegan peanut butter cookies recipe</h3>
+                    <p>Say hello to the best vegan peanut butter cookies out there! These easy cookies have chewy middles, crumbly edges, and a fantastic nutty flavor.</p>
+                </a>
+            </div>
+          
+        </div>
+    </section>   
+    <br>
+    <br>
+    <br> 
+    <section>
+    <br>
+    <footer>
+        &copy; Flavour Files 2024
+    </footer>
+    <div id="overlay"></div>
+    <div id="generatingMessage">Generating a recipe just for you...</div>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('dropdown-menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
+        function generateRandomRecipe() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("generatingMessage").style.display = "block";
+
+            var recipes = [
+                "https://www.loveandlemons.com/matcha-latte/",
+                "https://vikalinka.com/meat-dumplings-pelmeni/",
+                "https://www.justonecookbook.com/homemade-chashu-miso-ramen/",
+                "https://simply-delicious-food.com/easy-focaccia-bread/",
+                "https://www.ambitiouskitchen.com/best-cinnamon-rolls/",
+                "https://www.cooking-therapy.com/matcha-white-chocolate-chip-cookies/",
+                "https://bakeplaysmile.com/favourite-chocolate-cake/",
+                "https://www.crunchtimekitchen.com/caramelized-onion-ciabatta/",
+                "https://www.allrecipes.com/recipe/9959/marshmallow-treats/",
+                "https://tastesbetterfromscratch.com/chicken-noodle-soup/",
+                "https://www.recipetineats.com/lasagna/",
+                "https://www.recipetineats.com/no-yeast-pizza-dough/",
+                "https://www.bbcgoodfood.com/recipes/turmeric-latte",
+                "https://www.recipetineats.com/pesto-pasta-salad/",
+                "https://dish.co.nz/recipes/roasted-pumpkin-and-lentil-salad-with-feta-and-yoghurt-dressing/",
+                "https://www.tamingtwins.com/courgette-fritters-recipe/",
+                "https://www.loveandlemons.com/vegetarian-lasagna/",
+                "https://www.wellplated.com/tofu-tacos/",
+                "https://www.bbcgoodfood.com/recipes/vegetarian-ramen",
+                "https://www.bbcgoodfood.com/recipes/satay-sweet-potato-curry",
+                "https://www.noracooks.com/vegan-carrot-cake/",
+                "https://www.noracooks.com/oat-flour-pancakes/",
+                "https://www.loveandlemons.com/pasta-pomodoro/",
+                "https://www.loveandlemons.com/vegan-pizza/",
+                "https://www.loveandlemons.com/vegan-peanut-butter-cookies/",
+            ];
+            var randomIndex = Math.floor(Math.random() * recipes.length);
+            var randomRecipeUrl = recipes[randomIndex];
+
+            setTimeout(function () {
+                window.open(randomRecipeUrl, '_blank');
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("generatingMessage").style.display = "none";
+            }, 1000); 
+        }
+
+        const welcomeMessage = "Discover a diverse range of our recipe files!";
+        let index = 0;
+
+        function typeWelcomeMessage() {
+            if (index < welcomeMessage.length) {
+                document.querySelector('header p').innerHTML += welcomeMessage.charAt(index);
+                index++;
+                setTimeout(typeWelcomeMessage, 40);
+            }
+        }
+
+        window.onload = typeWelcomeMessage;
+    </script>
+</body>
+</html>

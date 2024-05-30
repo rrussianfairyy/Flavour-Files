@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavour Files - User Photos</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #ff670f;
+            color: #fff;
+            text-align: left;
+            padding: 5px 20px;
+            position: relative;
+            height: 100px;
+        }
+        header h1 {
+            font-size: 22px;
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 20px 0;
+            text-align: left;
+        }
+        header p {
+            font-size: 12px;
+            margin-top: -10px;
+            text-align: left;
+        }
+        .hamburger {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background-color: #000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #333;
+        }
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+        .dropdown-menu a:hover {
+            background-color: #333;
+        }
+        .container {
+            flex: 1;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .section {
+            margin-bottom: 30px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        .section h2 {
+            font-size: 60px;
+            color: #d45a13;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .section p {
+            text-align: center;
+        }
+        .user-photos {
+            display: grid;
+            grid-template-columns: repeat(5, 2fr);
+            gap: 30px;
+            justify-content: center;
+        }
+        .photo {
+            position: relative;
+        }
+        .photo img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 0px;
+            box-shadow: 0 2px 5px  #d45a13;
+        }
+        .like-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color:    #ff670f;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 100px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .like-btn .like-count {
+            margin-left: 5px;
+        }
+        footer {
+            background-color:#ff670f;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FLAVOUR FILES</h1>
+        <p></p>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu">
+            <a href="index.html">Home</a>
+            <a href="recipes.html">Recipes</a>
+            <a href="user-photos.html">User Photos</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </header>
+    <section id="user-photos" class="section">
+        <h2>USER PHOTOS</h2>
+        <br><br>
+        <div class="user-photos">
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/61/62/e1/6162e1a2078cb781cfca9a4876b09d52.jpg" alt="User Photo 1">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/ce/3d/da/ce3dda95619f6dcd9b42821c6c4d3147.jpg" alt="User Photo 2">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/0a/70/06/0a70068dc42ec6565a8de552caa8ff7a.jpg" alt="User Photo 3">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/736x/1e/c3/57/1ec357b8a17bec72abad168fd91a39fa.jpg" alt="User Photo 4">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/a0/8f/d9/a08fd97b3f16a9ba501833dcd4f9a375.jpg" alt="User Photo 5">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/a6/0c/22/a60c22076317fad0258a1cd9b275011a.jpg" alt="User Photo 6">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/13/27/3a/13273a3afdaaa71a657bf1a6030edb0b.jpg" alt="User Photo 7">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/ff/97/4b/ff974b8e35b7437014167b4f885848c1.jpg" alt="User Photo 8">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/27/6c/78/276c78e1bf869d06a6f296aff1fd95aa.jpg" alt="User Photo 9">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/98/f4/d8/98f4d87e986020de411d7cb93e4f596f.jpg" alt="User Photo 10">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/a0/7a/51/a07a517f376991a47397104ced16607e.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/5e/04/00/5e0400ce21fd83ba91ff6364aa144aeb.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/45/c5/1a/45c51adc9717deb733cd30467adab054.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/56/e4/ff/56e4ffb8468f7cb03a637e6baa7b8781.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/736x/1e/c3/57/1ec357b8a17bec72abad168fd91a39fa.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/b6/b2/a7/b6b2a7c2793d59c42f4ae66f0296c1f1.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/7f/1b/57/7f1b57071c190dc4967e5f623e233b23.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/3d/ea/88/3dea885273e1a2315e7b03e960b12ba8.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/82/7b/6e/827b6e4f4bc56c7e153d250f2bc2356d.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/736x/62/e3/ab/62e3ab39079d3365236205187d9300de.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/2d/ff/b8/2dffb808f24379c2408a93d3818399af.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/9f/b8/a2/9fb8a21724fbf4b885da271eb1a995d4.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/f7/d1/85/f7d1858a1eb9b8244933f4b43a71ae06.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/0c/62/d7/0c62d7a6ce4a0e80d3ce32baa079ecac.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/1e/9e/cb/1e9ecb0ab84c10eea62f88faf555641d.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/3c/ed/94/3ced94da181d5b2a635e512affa39136.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/a9/40/a8/a940a8979626334fac4f660853a4658c.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/49/8c/55/498c556ec1b07ef2d78b1eec4c2b95b8.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/8b/0b/ba/8b0bba352e18f36dac9c8cf82056460b.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/e1/1f/1c/e11f1c500d5ce73792ceaef965eeb7b2.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/8b/48/5d/8b485df9683730e91058cb4a65742e7d.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/ae/8d/6b/ae8d6b11128e046641ec6da03e47bd52.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/b6/b2/a7/b6b2a7c2793d59c42f4ae66f0296c1f1.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/76/8e/63/768e63b1c9cc68bac9db376602dccd16.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/4a/e6/0f/4ae60fb201f5483936b7e5be4de4b1ef.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/8f/08/e5/8f08e500148d8b45908b0c52c8bce58d.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/c3/6e/57/c36e57a060c7463b6e5c522bbdafab3b.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/6e/66/06/6e6606b9c348ee54f37512eb7922723c.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/54/1a/61/541a6143b44a6c0fc0e6140586a86e4d.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/ec/ea/ae/eceaae2ce35a767389ecbd0a55c5df6b.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/81/db/20/81db2044ab49fc7cdf9c656c14d5ba59.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/17/a2/07/17a207824cde8cc1600e92759824a2c7.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/8f/bf/b3/8fbfb3171f5b85736152f55a1986dc3b.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/d0/fc/90/d0fc903fd726d69f358ff234f99f5f91.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+            <div class="photo">
+                <img src="https://i.pinimg.com/474x/52/e9/bf/52e9bfa1c5bc0350422ca3b64ca72e60.jpg" alt="User Photo 11">
+                <button class="like-btn" onclick="toggleLike(this)">Like <span class="like-count">0</span></button>
+            </div>
+
+
+
+            
+            
+            
+            
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <footer>
+        &copy; Flavour Files 2024
+    </footer>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('dropdown-menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
+        function toggleLike(button) {
+            const likeCountSpan = button.querySelector('.like-count');
+            let likeCount = parseInt(likeCountSpan.textContent, 10);
+            likeCount++;
+            likeCountSpan.textContent = likeCount;
+        }
+
+        const welcomeMessage = "Blog and be a part of the foodie community!";
+        let index = 0;
+
+        function typeWelcomeMessage() {
+            if (index < welcomeMessage.length) {
+                document.querySelector('header p').innerHTML += welcomeMessage.charAt(index);
+                index++;
+                setTimeout(typeWelcomeMessage, 40);
+            }
+        }
+
+        window.onload = typeWelcomeMessage;
+    </script>
+</body>
+</html>
